@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, clearCart } from "../features/cartSlice";
@@ -22,13 +20,13 @@ const Panier = () => {
   );
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2  style={{fontFamily:"cursive",marginLeft:"600px"}}>Votre Panier</h2>
+    <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
+      <h2 style={{ fontFamily: "cursive", textAlign: "center" }}>Votre Panier</h2>
       {cartItems.length === 0 ? (
-        <p style={{fontFamily:"cursive", fontWeight:"bold"}}>Votre panier est vide.</p>
+        <p style={{ fontFamily: "cursive", fontWeight: "bold", textAlign: "center" }}>Votre panier est vide.</p>
       ) : (
         <div>
-          <ul>
+          <ul style={{ padding: 0, listStyleType: "none" }}>
             {cartItems.map((item) => (
               <li
                 key={item.id}
@@ -44,16 +42,20 @@ const Panier = () => {
                 <div>
                   <strong>{item.nom}</strong> : {item.prix} DA x {item.quantity}
                 </div>
-                <button onClick={() => handleRemoveFromCart(item.id)}>
+                <button onClick={() => handleRemoveFromCart(item.id)} >
                   Supprimer
                 </button>
               </li>
             ))}
           </ul>
-          <p style={{fontFamily:"cursive",marginLeft:"35px"}}>Total : {total.toFixed(2)} DA </p>
-          <button onClick={handleClearCart} style={{ marginTop: "10px",marginLeft:"35px" }}>
+          <div style={{ fontFamily: "cursive",textAlign:"center" }}>
+          <p >Total : {total.toFixed(2)} DA</p>
+          
+          <button onClick={handleClearCart}  >
             Vider le panier
           </button>
+          
+          </div>
         </div>
       )}
     </div>
@@ -61,4 +63,3 @@ const Panier = () => {
 };
 
 export default Panier;
-
